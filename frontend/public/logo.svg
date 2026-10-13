@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="56" height="56">
+  <!-- Shield shape -->
+  <path d="M50 5 L90 20 L90 55 C90 75 70 90 50 95 C30 90 10 75 10 55 L10 20 Z" 
+        fill="#c4883f" stroke="#8b5e30" stroke-width="2"/>
+  <!-- Inner shield -->
+  <path d="M50 12 L83 25 L83 54 C83 71 66 84 50 88 C34 84 17 71 17 54 L17 25 Z" 
+        fill="#fdf0df"/>
+  <!-- Treasury column / key symbol -->
+  <rect x="46" y="28" width="8" height="35" rx="1" fill="#c4883f"/>
+  <circle cx="50" cy="26" r="6" fill="none" stroke="#c4883f" stroke-width="3"/>
+  <!-- Horizontal bars -->
+  <rect x="42" y="40" width="16" height="3" rx="1" fill="#c4883f"/>
+  <rect x="42" y="47" width="16" height="3" rx="1" fill="#c4883f"/>
+  <!-- Star -->
+  <polygon points="50,55 52,60 57,60 53,63 55,68 50,65 45,68 47,63 43,60 48,60" 
+           fill="#c4883f"/>
+  <!-- Decorative lines -->
+  <line x1="30" y1="75" x2="70" y2="75" stroke="#c4883f" stroke-width="1.5"/>
+  <line x1="35" y1="79" x2="65" y2="79" stroke="#c4883f" stroke-width="1"/>
+</svg>

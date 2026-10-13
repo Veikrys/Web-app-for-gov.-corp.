@@ -1,0 +1,44 @@
+import './ImageZoomModal.css';
+
+export default function ImageZoomModal({ image, onClose }) {
+  if (!image) return null;
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  };
+
+  return (
+    <div
+      className="image-zoom-modal"
+      onClick={handleBackdropClick}
+      onKeyDown={handleKeyDown}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Увеличенное изображение"
+    >
+      <div className="image-zoom-overlay" aria-hidden="true"></div>
+      <div className="image-zoom-container">
+        <button
+          className="image-zoom-close"
+          onClick={onClose}
+          aria-label="Закрыть"
+        >
+          ✕
+        </button>
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="image-zoom-img"
+        />
+      </div>
+    </div>
+  );
+}
