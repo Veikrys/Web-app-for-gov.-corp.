@@ -1,14 +1,14 @@
 .hall-of-fame {
-  width: 340px;
-  min-width: 340px;
-  max-width: 340px;
   padding: 1.5rem 1.25rem;
   background: var(--bg-primary);
   border-left: 2px solid var(--border-color);
   overflow-y: auto;
-  max-height: calc(100vh - 140px);
+  overflow-x: hidden;
+  max-height: 770px;
+  min-width: 350px;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) var(--bg-card);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hall-of-fame::-webkit-scrollbar {
@@ -25,20 +25,81 @@
   border-radius: 4px;
 }
 
+/* ===== Заголовок ===== */
 .hall-of-fame-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 1.25rem 0;
-  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0;
 }
 
+.hall-of-fame-title:hover {
+  color: var(--accent-color);
+}
+
+/* Кнопка свернуть/развернуть */
+.hall-of-fame-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hall-of-fame-toggle-btn:hover {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  border-color: var(--accent-color);
+}
+
+/* ===== Карусель (свёрнуто) ===== */
 .hall-of-fame-carousel {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  padding-left: 30px;
 }
 
+/* ===== Сетка (раскрыто) ===== */
+.hall-of-fame-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+  max-height: 600px;
+  padding-bottom: 30px;
+}
+
+.hall-of-fame.expanded .hall-of-fame-grid {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== Пара сотрудников ===== */
+.hall-of-fame-pair {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ===== Карточка ===== */
 .hall-of-fame-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -47,8 +108,8 @@
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px var(--shadow-color);
-  opacity: 1;
-  transform: scale(1);
+  max-width: 250px;
+  max-height: 310px;
 }
 
 .hall-of-fame-card:hover {
@@ -58,7 +119,7 @@
   background: var(--bg-card-hover);
 }
 
-/* Fade animation classes */
+/* Fade animation для карусели */
 .hall-of-fame-card.visible {
   animation: hallOfFameFadeIn 0.8s ease forwards;
 }
@@ -89,9 +150,10 @@
   }
 }
 
+/* ===== Фото ===== */
 .hall-of-fame-photo-wrapper {
-  width: 107px;
-  height: 142px;
+  width: 100px;
+  height: 133px;
   margin: 0 auto 1rem;
   border-radius: 8px;
   overflow: hidden;
@@ -116,6 +178,7 @@
   transform: scale(1.05);
 }
 
+/* ===== Информация ===== */
 .hall-of-fame-info {
   display: flex;
   flex-direction: column;
@@ -123,7 +186,7 @@
 }
 
 .hall-of-fame-name {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -131,28 +194,28 @@
 }
 
 .hall-of-fame-position {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.4;
 }
 
 .hall-of-fame-dept {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   margin: 0;
   line-height: 1.4;
 }
 
-/* Skeleton loading */
+/* ===== Skeleton ===== */
 .skeleton {
   opacity: 0.6;
   animation: skeleton-pulse 1.5s ease-in-out infinite;
 }
 
 .skeleton-photo {
-  width: 107px;
-  height: 142px;
+  width: 100px;
+  height: 133px;
   margin: 0 auto 1rem;
   background: var(--bg-submenu);
   border-radius: 8px;
@@ -165,23 +228,35 @@
   margin: 0.5rem auto;
 }
 
-.skeleton-name {
-  width: 70%;
-}
-
-.skeleton-position {
-  width: 85%;
-}
-
-.skeleton-dept {
-  width: 60%;
-}
+.skeleton-name { width: 70%; }
+.skeleton-position { width: 85%; }
+.skeleton-dept { width: 60%; }
 
 @keyframes skeleton-pulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.8; }
 }
 
+/* ===== Анимации появления сетки ===== */
+.hall-of-fame-pair {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: pairAppear 0.5s ease forwards;
+  padding-bottom: 20px;
+}
+
+.hall-of-fame-pair:nth-child(1) { animation-delay: 0.1s; }
+.hall-of-fame-pair:nth-child(2) { animation-delay: 0.2s; }
+.hall-of-fame-pair:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes pairAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Ошибки и пустое состояние ===== */
 .hall-of-fame-error,
 .hall-of-fame-empty {
   text-align: center;
@@ -190,12 +265,10 @@
   padding: 2rem;
 }
 
-/* Responsive */
+/* ===== Адаптив ===== */
 @media (max-width: 1200px) {
   .hall-of-fame {
     width: 300px;
-    min-width: 300px;
-    max-width: 300px;
   }
 }
 
@@ -217,7 +290,7 @@
   }
 
   .hall-of-fame {
-    width: 100%;
+    width: 100% !important;
     max-width: none;
     max-height: none;
     border-left: none;
@@ -232,8 +305,12 @@
     justify-content: center;
   }
 
+  .hall-of-fame-pair {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .hall-of-fame-card {
-    flex: 0 0 auto;
-    width: calc(50% - 0.625rem);
+    flex: 1;
   }
 }

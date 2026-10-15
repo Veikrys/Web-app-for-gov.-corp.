@@ -21,7 +21,7 @@
 
 .org-info-image-wrapper {
   float: left;
-  margin: 0 2rem 1.5rem 0;
+  margin: 0 2rem 1rem 0;
   cursor: zoom-in;
   transition: transform 0.3s ease;
 }
@@ -31,7 +31,7 @@
 }
 
 .org-info-image {
-  width: 320px;
+  width: 380px;
   height: 220px;
   object-fit: cover;
   border-radius: 12px;
@@ -58,7 +58,7 @@
 }
 
 .org-info-chronicle {
-  margin: 4rem 0;
+  margin: 1rem 0;
 }
 
 .chronicle-link {

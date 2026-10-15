@@ -1,6 +1,6 @@
 import './ImageZoomModal.css';
 
-export default function ImageZoomModal({ image, onClose }) {
+export default function ImageZoomModal({ image, onClose, zoom = 1 }) {
   if (!image) return null;
 
   const handleBackdropClick = (e) => {
@@ -26,18 +26,22 @@ export default function ImageZoomModal({ image, onClose }) {
     >
       <div className="image-zoom-overlay" aria-hidden="true"></div>
       <div className="image-zoom-container">
-        <button
-          className="image-zoom-close"
-          onClick={onClose}
-          aria-label="Закрыть"
-        >
-          ✕
-        </button>
-        <img
-          src={image.src}
-          alt={image.alt}
-          className="image-zoom-img"
-        />
+        <div className="image-zoom-wrapper" style={{ transform: `scale(${zoom})`, '--zoom': zoom }}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="image-zoom-img"
+          />
+          <div className="image-zoom-btn-wrap">
+            <button
+              className="image-zoom-close"
+              onClick={onClose}
+              aria-label="Закрыть"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

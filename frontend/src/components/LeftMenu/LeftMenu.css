@@ -5,7 +5,7 @@
   background: var(--bg-primary);
   border-right: 2px solid var(--border-color);
   overflow-y: auto;
-  max-height: calc(100vh + 220px);
+  max-height: 770px;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) var(--bg-card);
 }
