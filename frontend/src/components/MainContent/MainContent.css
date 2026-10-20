@@ -3,6 +3,8 @@
   padding: 1.5rem 2rem;
   background: var(--bg-primary);
   overflow-y: auto;
+  max-height: 770px;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .org-info-title {

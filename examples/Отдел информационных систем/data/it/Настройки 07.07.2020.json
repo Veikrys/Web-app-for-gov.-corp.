@@ -1,0 +1,91 @@
+{
+    "GlobalConfig": {
+        "transparentMode": false,
+        "tunnelingApplicationNotification": true,
+        "updaterConfig": {
+            "autoCheckConfigUpdates": false,
+            "autoCheckSoftUpdates": false,
+            "downloadTimeout": 120,
+            "numberOfAttempts": 3,
+            "updateDirectory": "C:\\Users\\ReutskayaIO\\AppData\\Roaming\\ContinentTLSClient",
+            "updateHost": "",
+            "updatePeriod": 1
+        }
+    },
+    "PublicConfig": {
+        "loggingConfig": {
+            "fileLogMaxSize": 3145728,
+            "fileLoggingDirectory": "C:\\Users\\Public\\ContinentTLSClient\\",
+            "fileLoggingEnabled": true,
+            "logLevel": 2,
+            "sessionLogsEnabled": false
+        },
+        "serialNumber": "",
+        "tlsProtocolCode": "1_0_OR_1_2"
+    },
+    "RegistrationUserInfo": {
+        "city": "",
+        "department": "",
+        "email": "",
+        "firstName": "",
+        "host": "registration.securitycode.ru",
+        "lastName": "",
+        "middleName": "",
+        "organization": "",
+        "protectionClass": "kc1"
+    },
+    "RegistryConfig": {
+        "runAtStartup": true,
+        "uriRegistered": false
+    },
+    "UserConfig": {
+        "certWarnExpirationDays": 14,
+        "checkServerCertFingerprint": false,
+        "crlAutoUpdate": true,
+        "crlNextUpdateExpirationDays": 4,
+        "crlUpdatePeriod": 5,
+        "defaultCertificate": "",
+        "denyRegistryNotification": false,
+        "externalProxyConfig": {
+            "authMethod": "Auto",
+            "exceptions": "",
+            "host": "",
+            "port": 0,
+            "useProxy": false
+        },
+        "performMobyDickTest": false,
+        "proxyPort": 8080,
+        "resources": [
+            {
+                "host": "lk2012.budget.gov.ru",
+                "hostForHandshake": "lk2012.budget.gov.ru",
+                "id": 2,
+                "isStartPage": false,
+                "name": "lk2012.budget.gov.ru",
+                "tlsServerId": 0
+            },
+            {
+                "host": "lk.budget.gov.ru",
+                "hostForHandshake": "lk.budget.gov.ru",
+                "id": 2,
+                "isStartPage": false,
+                "name": "lk.budget.gov.ru",
+                "tlsServerId": 0
+            },
+            {
+                "host": "buh2012.budget.gov.ru",
+                "hostForHandshake": "buh2012.budget.gov.ru",
+                "id": 3,
+                "isStartPage": false,
+                "name": "buh2012.budget.gov.ru",
+                "tlsServerId": 0
+            }
+        ],
+        "uiConfig": {
+            "runMinimized": true,
+            "uiTheme": "light-theme"
+        },
+        "useAutoProxyIEConfig": false,
+        "useCrl": true
+    }
+}

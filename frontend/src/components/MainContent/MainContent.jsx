@@ -39,7 +39,7 @@ export default function MainContent() {
         <div className="org-info-chronicle">
           <a href="/data/svl_22_3.docx" className="chronicle-link" target="_blank" rel="noopener noreferrer">
             <span className="chronicle-icon" aria-hidden="true">📜</span>
-            Летопись Управления
+            Летопись Управления (.PDF)
           </a>
         </div>
       </section>

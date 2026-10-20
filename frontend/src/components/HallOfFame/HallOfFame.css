@@ -2,6 +2,7 @@
   padding: 1.5rem 1.25rem;
   background: var(--bg-primary);
   border-left: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 770px;
@@ -74,6 +75,7 @@
   flex-direction: column;
   gap: 1.25rem;
   padding-left: 30px;
+  max-width: 350px;
 }
 
 /* ===== Сетка (раскрыто) ===== */
@@ -109,7 +111,9 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px var(--shadow-color);
   max-width: 250px;
-  max-height: 310px;
+  max-height: 330px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hall-of-fame-card:hover {

@@ -1,9 +1,10 @@
 .left-menu {
   width: 30%;
-  min-width: 440px;
+  min-width: 444px;
   padding: 20px; 
   background: var(--bg-primary);
   border-right: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   overflow-y: auto;
   max-height: 770px;
   scrollbar-width: thin;
