@@ -29,3 +29,12 @@ npm-debug.log*
 
 # Large files
 frontend/public/data/svl_22_3.docx
+
+# Examples
+examples/
+
+# Photos in examples
+examples/Фотогалерея/photo20/
+
+# Person photos
+frontend/public/img/person/
