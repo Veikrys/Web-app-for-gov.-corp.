@@ -1,0 +1,23 @@
+{
+    "id": 1779977265,
+    "title": "тест1",
+    "start_date": "2026-05-28T17:07",
+    "end_date": "2026-05-29T17:07",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Тест1",
+            "type": "single",
+            "answers": [
+                "Да",
+                "Нет"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        }
+    ]
+}

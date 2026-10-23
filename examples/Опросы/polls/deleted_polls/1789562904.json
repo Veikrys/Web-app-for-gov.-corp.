@@ -1,0 +1,24 @@
+{
+    "id": 1789562904,
+    "title": "дддд",
+    "title_short": "дддд",
+    "start_date": "2026-09-16T15:46",
+    "end_date": "2026-09-16T16:26",
+    "creator": "FSFK\\ANDRIANOVAEYU",
+    "voting_type": "anonymous",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "ддддд",
+            "type": "single",
+            "answers": [
+                "жжжж",
+                "жжж"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        }
+    ]
+}

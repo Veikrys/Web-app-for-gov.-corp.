@@ -66,6 +66,7 @@
   font-weight: 700;
   color: var(--text-primary);
   margin: 2rem 0 1rem;
+  line-height: 1.5;
 }
 
 .manual-content h3:first-child {
@@ -77,11 +78,13 @@
   font-weight: 600;
   color: var(--text-secondary);
   margin: 1.5rem 0 0.75rem;
+  line-height: 1.5;
 }
 
 .manual-content p {
   margin: 0.75rem 0;
   text-align: justify;
+  line-height: 1.6;
 }
 
 .manual-content ul,
@@ -103,6 +106,47 @@
 .manual-content a:hover {
   color: var(--accent-hover);
   text-decoration: underline;
+}
+
+.manual-content a.undb {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.manual-content a.undb:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.manual-content a.undb span {
+  text-decoration: none;
+}
+
+/* Общие таблицы */
+.manual-content table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.manual-content table td {
+  padding: 0.5rem;
+  vertical-align: top;
+  border: 1px solid var(--border-color);
+}
+
+/* Таблицы-макеты (ячейки без границ, для подписей/подписей) */
+.manual-content table td[style*='borderStyle'] {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  vertical-align: middle;
+}
+
+.manual-content pre {
+  margin: 0.5rem 0;
+  line-height: 1;
 }
 
 .manual-content .pre-phone {
@@ -137,6 +181,7 @@
 .vt_info_wrapper {
   overflow-x: auto;
   margin: 1em 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .vt_info {
@@ -150,15 +195,41 @@
   padding: 0.5rem;
   border: 1px solid var(--border-color);
   vertical-align: top;
+  white-space: nowrap;
 }
 
 .vt_info th {
   background: var(--bg-submenu);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .fullname_l {
   font-weight: 700;
+}
+
+/* Обёртка для таблиц, которые могут не помещаться */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+  min-width: 700px;
+}
+
+/* Таблица состава комиссии */
+.korr_com {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.korr_com td,
+.korr_com th {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  vertical-align: top;
 }
 
 @media (max-width: 768px) {

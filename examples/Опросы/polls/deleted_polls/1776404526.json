@@ -1,0 +1,37 @@
+{
+    "id": 1776404526,
+    "title": "Опрос на тему централизации LanDocs",
+    "start_date": "2026-04-17T08:40",
+    "end_date": "2026-04-18T08:40",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Нравится ли вам интерфейс LanDocs Web?",
+            "type": "single",
+            "answers": [
+                "Да",
+                "Нет"
+            ],
+            "votes": [
+                4,
+                3
+            ]
+        },
+        {
+            "id": "q2",
+            "text": "Получилось ли авторизоваться в LanDocs Web?",
+            "type": "single",
+            "answers": [
+                "Да",
+                "Нет",
+                "Не пробовал"
+            ],
+            "votes": [
+                6,
+                0,
+                1
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "id": 1777540653,
+    "title": "Название",
+    "start_date": "2026-04-30T12:16",
+    "end_date": "2026-04-30T12:18",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "а",
+            "type": "single",
+            "answers": [
+                "а",
+                "а"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        },
+        {
+            "id": "q2",
+            "text": "а",
+            "type": "multiple",
+            "answers": [
+                "а",
+                "а",
+                "а",
+                "а"
+            ],
+            "votes": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ]
+}

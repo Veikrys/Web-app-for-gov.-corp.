@@ -1,0 +1,23 @@
+{
+    "id": 1780650454,
+    "title": "Тест2222",
+    "start_date": "2026-06-05T12:07",
+    "end_date": "2026-06-06T12:07",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Вопрос1111",
+            "type": "single",
+            "answers": [
+                "Ответ11111",
+                "Ответ22222"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        }
+    ]
+}

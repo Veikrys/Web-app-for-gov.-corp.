@@ -3,7 +3,7 @@ export const menuData = [
     id: 'main-pages',
     title: 'Основные страницы сайта',
     items: [
-      { label: 'Документы на нового сотрудника', url: 'depsec.php?doc=0' },
+      { label: 'Документы на нового сотрудника', url: '/worker' },
       { label: 'Отдел информационных систем', url: '#', children: [
         { label: 'Стандарты обслуживания', url: '/ois/standards' },
         { label: 'Инструкция пользователя АС', url: '/ois/as-instruction' },
@@ -22,11 +22,35 @@ export const menuData = [
         { label: 'Действия при поломке телефонии в районе', url: '/ois/telephony' },
         { label: 'Памятки при аварийных ситуациях', url: '/ois/emergency' },        
       ]},
-      { label: 'Отдел ГГСиК', url: 'depkadr.php' },
-      { label: 'Административно-финансовый отдел', url: 'depadm.php' },
-      { label: 'Отдел РСиБИ', url: 'depsec.php?doc=1' },
-      { label: 'Фотоконкурсы Управления', url: 'konkurs.php' },
-      { label: 'Телефонный справочник — клиенты', url: 'ubp.php', adminOnly: true },
+      {
+        label: 'Отдел ГГСиК',
+        url: '#',
+        children: [
+          { label: 'Заявления', url: '/ggsik/declarations' },
+          { label: 'Нормативно-правовые акты', url: '/ggsik/legal-acts' },
+          { label: 'Методические материалы', url: '/ggsik/methods' },
+          { label: 'Формы и бланки', url: '/ggsik/forms' },
+          { label: 'Деятельность комиссии', url: '/ggsik/commission' },
+        ],
+      },
+      {
+        label: 'Административно-финансовый отдел',
+        url: '#',
+        children: [
+          { label: 'Инструкция по Ландокс МЭДО', url: '/afo/landoks-medo' },
+          { label: 'Шаблоны документов', url: '/afo/templates' },
+        ],
+      },
+      {
+        label: 'Отдел РСиБИ',
+        url: '#',
+        children: [
+          { label: '📜 Порядок реализации функций УЦ (.PDF)', url: '/data/RSiBI/doc21-02.pdf' },
+          { label: 'Порядок изготовления ключей ЭП для сотрудника УФК', url: '/secbi/keys-order' },
+          { label: 'Документы в отдел РСиБИ', url: '/secbi/docs' },
+        ],
+      },
+      { label: 'Фотогалерея', url: '/gallery' },
       {
         label: 'Опросы',
         url: '#',

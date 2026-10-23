@@ -1,0 +1,23 @@
+{
+    "id": 1780493350,
+    "title": "nnn",
+    "start_date": "2026-06-03T16:29",
+    "end_date": "2026-06-20T16:29",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "nnn",
+            "type": "single",
+            "answers": [
+                "nnn",
+                "nnn"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "id": 1778159990,
+    "title": "Тестовый тест",
+    "start_date": "2026-05-07T16:19",
+    "end_date": "2026-05-07T16:21",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Работает ли менеджер опросов?",
+            "type": "single",
+            "answers": [
+                "Да",
+                "Нет"
+            ],
+            "votes": [
+                0,
+                1
+            ]
+        },
+        {
+            "id": "q2",
+            "text": "Работает ли голосование?",
+            "type": "multiple",
+            "answers": [
+                "Да",
+                "Нет",
+                "Не знаю"
+            ],
+            "votes": [
+                0,
+                1,
+                1
+            ]
+        }
+    ]
+}

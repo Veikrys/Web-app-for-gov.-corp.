@@ -91,6 +91,70 @@ app.get('/api/active-users', async (req, res) => {
   }
 });
 
+// === Фотогалерея ===
+
+// Получить список альбомов галереи
+app.get('/api/gallery/albums', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT
+        k.ID_K,
+        k.name,
+        k.type,
+        (
+          SELECT COUNT(*)
+          FROM photo20 p
+          WHERE p.id_k = k.ID_K
+            AND p.ofk IN (3750,3751,3752,3753,3754,3755,3756,3757,3758,3759,3760,3761)
+        ) AS photo_count
+      FROM konkurs k
+      WHERE k.active > 0
+      ORDER BY k.name
+    `);
+    res.json(rows);
+  } catch (err) {
+    console.error('Ошибка получения альбомов галереи:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Получить фотографии конкретного альбома
+app.get('/api/gallery/album/:ofk', async (req, res) => {
+  try {
+    const { ofk } = req.params;
+    const [rows] = await pool.query(`
+      SELECT
+        p.ID_P,
+        p.id_k,
+        p.ofk,
+        p.date_photo,
+        p.file_small,
+        p.file_full,
+        p.description,
+        p.width_small,
+        p.height_small,
+        p.width_full,
+        p.height_full,
+        p.Comment,
+        p.tag,
+        p.fav,
+        p.time_post,
+        COALESCE(AVG(v.mark), 0) AS s_m,
+        COUNT(v.mark) AS c_m,
+        COALESCE(SUM(v.mark), 0) AS n_m
+      FROM photo20 p
+      LEFT JOIN photo20_vote v ON p.ID_P = v.id_p
+      WHERE p.ofk = ?
+      GROUP BY p.ID_P
+      ORDER BY p.fav DESC, p.time_post DESC
+    `, [ofk]);
+    res.json(rows);
+  } catch (err) {
+    console.error('Ошибка получения фотографий альбома:', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.listen(PORT, async () => {
   console.log(`Backend запущен на порту ${PORT}`);
   try {

@@ -1,0 +1,63 @@
+ID=1775123431 | Title="Тестовый опрос №3" | Deleted at=2026-04-02 13:04:07 | By=FSFK\CHERNIKOVAV
+ID=1775131270 | Title="Тестовый опрос №4" | Deleted at=2026-04-02 15:01:16 | By=FSFK\CHERNIKOVAV
+ID=1775131355 | Title="Тестовый опрос №3" | Deleted at=2026-04-02 15:02:57 | By=FSFK\CHERNIKOVAV
+ID=1775131404 | Title="Тестовый опрос №3" | Deleted at=2026-04-02 15:03:26 | By=FSFK\CHERNIKOVAV
+ID=1775134067 | Title="Тест" | Deleted at=2026-04-02 15:49:19 | By=FSFK\CHERNIKOVAV
+ID=1775135110 | Title="Тестовый опрос разработчика222" | Deleted at=2026-04-02 16:06:58 | By=FSFK\CHERNIKOVAV
+ID=1775138825 | Title="Тест2" | Deleted at=2026-04-02 17:07:07 | By=FSFK\CHERNIKOVAV
+ID=1775461169 | Title="Тест6" | Deleted at=2026-04-06 10:39:39 | By=FSFK\CHERNIKOVAV
+ID=1775139383 | Title="Тест5" | Deleted at=2026-04-06 10:39:44 | By=FSFK\CHERNIKOVAV
+ID=1775135573 | Title="Тестовый опрос разработчика" | Deleted at=2026-04-06 10:39:52 | By=FSFK\CHERNIKOVAV
+ID=1775552043 | Title="Тестовый опрос для проверки результатов" | Deleted at=2026-04-08 12:08:50 | By=FSFK\CHERNIKOVAV
+ID=1775639494 | Title="Тестовый опрос для проверки отображения результатов" | Deleted at=2026-04-08 12:37:23 | By=FSFK\CHERNIKOVAV
+ID=1775641115 | Title="Тестовый опрос для проверки отображения результатов" | Deleted at=2026-04-08 15:10:14 | By=FSFK\CHERNIKOVAV
+ID=1775650296 | Title="Тестовый опрос для проверки отображения результатов" | Deleted at=2026-04-09 11:30:51 | By=FSFK\CHERNIKOVAV
+ID=1775723543 | Title="Тестовый опрос для проверки отображения результатов" | Deleted at=2026-04-09 15:19:39 | By=FSFK\CHERNIKOVAV
+ID=1777276227 | Title="Тест" | Deleted at=2026-04-27 10:50:30 | By=FSFK\CHERNIKOVAV
+ID=1777363037 | Title="Тест" | Deleted at=2026-04-28 10:58:11 | By=FSFK\CHERNIKOVAV
+ID=1775467546 | Title="Тестовый опрос разработчика" | Deleted at=2026-04-28 15:03:45 | By=FSFK\CHERNIKOVAV
+ID=1775467604 | Title="Тестовый опрос для проверки блока" | Deleted at=2026-04-28 15:04:29 | By=FSFK\CHERNIKOVAV
+ID=1775650905 | Title="Тестовый опрос для проверки функции "Поделиться"" | Deleted at=2026-04-28 15:04:35 | By=FSFK\CHERNIKOVAV
+ID=1775737262 | Title="Тестовый опрос для проверки отображения результатов" | Deleted at=2026-04-28 15:04:40 | By=FSFK\CHERNIKOVAV
+ID=1776950083 | Title="Тестовый опрос для проверки публичного голосования" | Deleted at=2026-04-28 15:04:46 | By=FSFK\CHERNIKOVAV
+ID=1776950291 | Title="Тестовый опрос для проверки анонимного голосования" | Deleted at=2026-04-28 15:04:53 | By=FSFK\CHERNIKOVAV
+ID=1777384770 | Title="ТесттесттестТесттесттест3" | Deleted at=2026-04-28 16:59:52 | By=FSFK\CHERNIKOVAV
+ID=1777384724 | Title="Тесттесттест3" | Deleted at=2026-04-28 16:59:58 | By=FSFK\CHERNIKOVAV
+ID=1777383556 | Title="Тесттесттест" | Deleted at=2026-04-28 17:00:06 | By=FSFK\CHERNIKOVAV
+ID=1777383975 | Title="Тесттесттест2" | Deleted at=2026-04-28 17:00:15 | By=FSFK\CHERNIKOVAV
+ID=1777385084 | Title="ТесттесттестТесттесттест4" | Deleted at=2026-04-28 17:08:44 | By=FSFK\CHERNIKOVAV
+ID=1777384994 | Title="ТесттесттестТесттесттест3" | Deleted at=2026-04-28 17:08:50 | By=FSFK\CHERNIKOVAV
+ID=1777385206 | Title="ТесттесттестТесттесттест5" | Deleted at=2026-04-30 12:16:15 | By=FSFK\CHERNIKOVAV
+ID=1777297541 | Title="Тестовый опрос для проверки стилей" | Deleted at=2026-04-30 12:16:23 | By=FSFK\CHERNIKOVAV
+ID=1777540653 | Title="Название" | Deleted at=2026-04-30 12:17:36 | By=FSFK\CHERNIKOVAV
+ID=1779974383 | Title="Тестовый тест3" | Deleted at=2026-05-28 16:20:00 | By=FSFK\CHERNIKOVAV
+ID=1779974362 | Title="Тестовый тест2" | Deleted at=2026-05-28 16:20:05 | By=FSFK\CHERNIKOVAV
+ID=1779974299 | Title="Тестовый тест1" | Deleted at=2026-05-28 16:21:06 | By=FSFK\CHERNIKOVAV
+ID=1776404526 | Title="Опрос на тему централизации LanDocs" | Deleted at=2026-05-28 16:21:12 | By=FSFK\CHERNIKOVAV
+ID=1777018022 | Title="Опрос для проверки участия в голосовании за благоустройство города и в регистрации на ЕР" | Deleted at=2026-05-28 16:21:19 | By=FSFK\CHERNIKOVAV
+ID=1779977265 | Title="тест1" | Deleted at=2026-05-29 10:07:02 | By=FSFK\CHERNIKOVAV
+ID=1780040412 | Title="Тест4" | Deleted at=2026-05-29 10:45:14 | By=FSFK\CHERNIKOVAV
+ID=1780038488 | Title="Тест3" | Deleted at=2026-05-29 10:45:21 | By=FSFK\CHERNIKOVAV
+ID=1780040684 | Title="Тест5" | Deleted at=2026-05-29 10:49:32 | By=FSFK\CHERNIKOVAV
+ID=1780041446 | Title="Тест" | Deleted at=2026-05-29 11:02:23 | By=FSFK\SENICHKINOV
+ID=1780057211 | Title="Тестовый анонимный опрос для демонстрации на планёрке 01.06.2026" | Deleted at=2026-05-29 15:20:19 | By=FSFK\CHERNIKOVAV
+ID=1780045158 | Title="Тест7" | Deleted at=2026-06-01 08:43:37 | By=FSFK\CHERNIKOVAV
+ID=1780040995 | Title="Тест6" | Deleted at=2026-06-01 08:43:49 | By=FSFK\CHERNIKOVAV
+ID=1778159990 | Title="Тестовый тест" | Deleted at=2026-06-01 08:44:07 | By=FSFK\CHERNIKOVAV
+ID=1777540549 | Title="Тестовый опрос для проверки удаления вопросов/вариантов ответа (при создании)" | Deleted at=2026-06-01 08:44:22 | By=FSFK\CHERNIKOVAV
+ID=1780491699 | Title="тест" | Deleted at=2026-06-03 16:05:00 | By=FSFK\CHERNIKOVAV
+ID=1780493350 | Title="nnn" | Deleted at=2026-06-03 16:31:52 | By=FSFK\CHERNIKOVAV
+ID=1780494081 | Title="nnn3" | Deleted at=2026-06-03 16:41:26 | By=FSFK\CHERNIKOVAV
+ID=1780493806 | Title="nnn" | Deleted at=2026-06-03 16:41:34 | By=FSFK\CHERNIKOVAV
+ID=1780650454 | Title="Тест2222" | Deleted at=2026-06-05 12:54:33 | By=FSFK\CHERNIKOVAV
+ID=1780897463 | Title="Тест3" | Deleted at=2026-06-08 08:47:51 | By=FSFK\CHERNIKOVAV
+ID=1780903835 | Title="Тест" | Deleted at=2026-06-08 10:30:58 | By=FSFK\CHERNIKOVAV
+ID=1780653302 | Title="Тест2222" | Deleted at=2026-06-10 10:24:27 | By=FSFK\CHERNIKOVAV
+ID=1782891050 | Title="Очень маленький, совсем не длинный (по названию) тестовый регулярный еженедельный публичный массовый опрос касательно очень важных тем, которые необходимо обсудить со всеми работниками" | Deleted at=2026-07-01 10:45:09 | By=FSFK\CHERNIKOVAV
+ID=1780905874 | Title="Тестовый опрос" | Deleted at=2026-07-17 08:54:08 | By=FSFK\CHERNIKOVAV
+ID=1780056415 | Title="Тестовый анонимный опрос для демонстрации на планёрке 08.06.2026" | Deleted at=2026-07-17 08:54:14 | By=FSFK\CHERNIKOVAV
+ID=1780048827 | Title="Тестовый публичный опрос для демонстрации на планёрке 08.06.2026" | Deleted at=2026-07-17 08:54:23 | By=FSFK\CHERNIKOVAV
+ID=1789562904 | Title="дддд" | Deleted at=2026-09-16 15:48:50 | By=FSFK\ANDRIANOVAEYU
+ID=1781694962 | Title="Осуществление контроля за соответствием расходов федеральных государственных гражданских служащих и работников федерального казенного учреждения «Центр по обеспечению деятельности Казначейства России» их доходам" | Deleted at=2026-09-25 09:09:09 | By=FSFK\MARKUSHOVAKV
+ID=1784266325 | Title="опрос иная оплачиваемая работа" | Deleted at=2026-09-25 09:30:53 | By=FSFK\MARKUSHOVAKV
+ID=1788771167 | Title="Опрос после обучения трудоустройство после увольнения, дача согласия за замещение должности" | Deleted at=2026-10-19 12:02:56 | By=FSFK\MARKUSHOVAKV

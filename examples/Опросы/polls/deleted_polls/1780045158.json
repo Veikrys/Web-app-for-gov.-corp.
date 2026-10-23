@@ -1,0 +1,23 @@
+{
+    "id": 1780045158,
+    "title": "Тест7",
+    "start_date": "2026-05-29T10:49",
+    "end_date": "2026-05-29T12:00",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Работает ли менеджер опросов?",
+            "type": "single",
+            "answers": [
+                "Да",
+                "Нет"
+            ],
+            "votes": [
+                1,
+                0
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "id": 1780903835,
+    "title": "Тест",
+    "start_date": "2026-06-08T10:30",
+    "end_date": "2026-06-18T10:30",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Тест1234567890",
+            "type": "single",
+            "answers": [
+                "Тест",
+                "Тест"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        }
+    ]
+}

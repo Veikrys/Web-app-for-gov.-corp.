@@ -1,0 +1,23 @@
+{
+    "id": 1779974362,
+    "title": "Тестовый тест2",
+    "start_date": "2026-05-28T16:18",
+    "end_date": "2026-05-29T16:18",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "public",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Работает ли ?",
+            "type": "single",
+            "answers": [
+                "Да",
+                "Нет"
+            ],
+            "votes": [
+                0,
+                0
+            ]
+        }
+    ]
+}
