@@ -54,8 +54,9 @@ export const menuData = [
       {
         label: 'Опросы',
         url: '#',
+        dynamic: 'polls',
         children: [
-          { label: 'Менеджер опросов', url: 'polls_manager.php', requiresAuth: true },
+          { label: 'Менеджер опросов', url: '/polls/manager', spa: true },
         ],
       },
       { label: 'Ведение базы данных сертификатов', url: 'certif.php', adminOnly: true },

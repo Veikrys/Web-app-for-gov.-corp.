@@ -48,7 +48,7 @@ export default function Footer() {
             Алексей Черников
           </p>
           <p className="footer-version">
-            Версия 0.1.8
+            Версия 1.0.1
           </p>
         </div>
 

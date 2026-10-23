@@ -7,6 +7,9 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
+// Опросы
+app.use('/api/polls', require('./polls'));
+
 // Подключение к MySQL (локальная установка)
 const pool = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',

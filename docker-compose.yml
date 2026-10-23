@@ -26,9 +26,14 @@ services:
       DB_USER: root
       DB_PASSWORD: '12345'
       DB_NAME: ufk
+      TZ: Europe/Moscow
+      # Пользователь модуля опросов, пока на прокси нет Windows-аутентификации
+      POLLS_DEV_USER: 'FSFK\CHERNIKOVAV'
+    volumes:
+      - ./backend/data:/app/data
     depends_on:
       - mysql
-  
+
   frontend:
     build: ./frontend
     container_name: my_frontend

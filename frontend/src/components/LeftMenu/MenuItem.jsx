@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './MenuItem.css';
 
-export default function MenuItem({ label, url, children, requiresAuth, depth = 0 }) {
+export default function MenuItem({ label, url, children, requiresAuth, spa, depth = 0 }) {
+  const navigate = useNavigate();
   const [showChildren, setShowChildren] = useState(false);
   const hasChildren = children && children.length > 0;
 
@@ -13,6 +15,12 @@ export default function MenuItem({ label, url, children, requiresAuth, depth = 0
         'Возможно, вы используете Firefox.\n\n' +
         'Рекомендуется использовать Google Chrome или Яндекс.Браузер.'
       );
+      return;
+    }
+    if (spa && !hasChildren) {
+      // Внутренний переход без перезагрузки — меню остаётся раскрытым
+      e.preventDefault();
+      navigate(url);
       return;
     }
     if (hasChildren) {
@@ -45,9 +53,7 @@ export default function MenuItem({ label, url, children, requiresAuth, depth = 0
       {showChildren && hasChildren && (
         <ul className="menu-sub-list" role="menu">
           {children.map((child, index) => (
-            <li key={`sub-${depth}-${index}`} role="none">
-              <MenuItem {...child} depth={depth + 1} />
-            </li>
+            <MenuItem key={`sub-${depth}-${index}`} {...child} depth={depth + 1} />
           ))}
         </ul>
       )}

@@ -96,6 +96,14 @@ import {
 import GalleryPage from './pages/gallery/GalleryPage';
 import GalleryAlbumPage from './pages/gallery/GalleryAlbumPage';
 
+// Страницы модуля опросов
+import {
+  PollsManagerPage,
+  PollPage,
+  PollEditPage,
+  PollResultsPage,
+} from './pages/polls';
+
 function App() {
   return (
     <ThemeProvider>
@@ -188,6 +196,12 @@ function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/gallery/:ofk" element={<GalleryAlbumPage />} />
             
+            {/* Страницы опросов */}
+            <Route path="/polls/manager" element={<PollsManagerPage />} />
+            <Route path="/polls/:id" element={<PollPage />} />
+            <Route path="/polls/:id/edit" element={<PollEditPage />} />
+            <Route path="/polls/:id/results" element={<PollResultsPage />} />
+
             {/* Редирект с старых URL на новые */}
             <Route path="/manuals" element={<Navigate to="/ois/as-instruction" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />

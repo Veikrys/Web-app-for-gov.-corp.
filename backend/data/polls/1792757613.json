@@ -1,0 +1,39 @@
+{
+    "id": 1792757613,
+    "title": "Тест",
+    "title_short": "Тест",
+    "start_date": "2026-10-23T15:13",
+    "end_date": "2026-10-24T15:13",
+    "creator": "FSFK\\CHERNIKOVAV",
+    "voting_type": "anonymous",
+    "questions": [
+        {
+            "id": "q1",
+            "text": "Работает ли",
+            "type": "single",
+            "answers": [
+                "Д",
+                "Н",
+                "Не знаю"
+            ],
+            "votes": [
+                0,
+                0,
+                1
+            ]
+        },
+        {
+            "id": "q2",
+            "text": "Точно?",
+            "type": "multiple",
+            "answers": [
+                "да",
+                "нет"
+            ],
+            "votes": [
+                0,
+                1
+            ]
+        }
+    ]
+}
