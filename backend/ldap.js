@@ -1,68 +1,146 @@
-// Подключение к контроллеру домена (Active Directory) для получения ФИО по логину.
-// Все настройки — в переменных окружения, пароль в коде не хранится:
-//   LDAP_URL          ldap://S3700DC01.fsfk.local:389
-//   LDAP_BASE_DN      DC=fsfk,DC=local
-//   LDAP_BIND_DN      FSFK\SERVICE_ACCOUNT   (учётка с правом чтения AD)
-//   LDAP_BIND_PASSWORD
-// Если LDAP_URL не задан или сервер недоступен — возвращается логин (как в старом сайте при ошибке AD).
-const { Client } = require('ldapts');
+// LDAP-утилита для подключения к контроллеру домена FSFK.local
+// Получает полные ФИО сотрудников по доменному логину (samaccountname).
+// Кэширует результаты в памяти, чтобы не обращаться к LDAP при каждом запросе.
 
-const config = {
-  url: process.env.LDAP_URL,
-  baseDN: process.env.LDAP_BASE_DN,
-  bindDN: process.env.LDAP_BIND_DN,
-  bindPassword: process.env.LDAP_BIND_PASSWORD,
-};
+const { connect, search, close } = require('ldapts');
 
-const enabled = !!(config.url && config.baseDN && config.bindDN && config.bindPassword);
+// ---------- Конфигурация ----------
 
-// Кэш ФИО: логин → ФИО. Живёт, пока работает процесс.
-const nameCache = new Map();
+const LDAP_HOST = process.env.LDAP_HOST || 'S3700DC01.fsfk.local';
+const LDAP_PORT = parseInt(process.env.LDAP_PORT, 10) || 389;
+const LDAP_BASE_DN = process.env.LDAP_BASE_DN || 'DC=fsfk,DC=local';
+const LDAP_SERVICE_USER = process.env.LDAP_SERVICE_USER || 'FSFK\\CHERNIKOVAV';
+const LDAP_SERVICE_PASSWORD = process.env.LDAP_SERVICE_PASSWORD || '';
 
-const escapeFilter = (s) => s.replace(/[\\*()\0]/g, (c) => '\\' + c.charCodeAt(0).toString(16).padStart(2, '0'));
+// ---------- Кэш ФИО ----------
+// Map<login (uppercase), fullName | null>
+const fullNameCache = new Map();
 
-async function lookupName(login) {
-  const client = new Client({ url: config.url, timeout: 5000, connectTimeout: 5000 });
-  try {
-    await client.bind(config.bindDN, config.bindPassword);
-    const { searchEntries } = await client.search(config.baseDN, {
-      scope: 'sub',
-      filter: `(sAMAccountName=${escapeFilter(login)})`,
-      attributes: ['displayName', 'sn', 'givenName'],
-      sizeLimit: 1,
-    });
-    const entry = searchEntries[0];
-    if (!entry) return null;
-    const first = (v) => (Array.isArray(v) ? v[0] : v);
-    if (entry.displayName) return String(first(entry.displayName));
-    if (entry.sn && entry.givenName) return `${first(entry.sn)} ${first(entry.givenName)}`;
+// Максимальный размер кэша
+const MAX_CACHE_SIZE = 5000;
+
+// ---------- Основной функционал ----------
+
+/**
+ * Получить полное ФИО сотрудника по доменному логину.
+ * @param {string} userKey — полный ключ пользователя, например "FSFK\\CHERNIKOVAV" или "CHERNIKOVAV"
+ * @returns {Promise<string|null>} — ФИО (displayName) или null, если не найдено
+ */
+async function getFullNameFromAD(userKey) {
+  if (!userKey || !LDAP_SERVICE_PASSWORD) {
     return null;
-  } finally {
-    await client.unbind().catch(() => {});
   }
-}
 
-// Возвращает ФИО для логина (вида "FSFK\LOGIN" или "LOGIN"); при ошибке — сам логин
-async function getFullName(userKey) {
-  const login = String(userKey).split('\\').pop();
-  if (!enabled) return login;
-  const key = login.toUpperCase();
-  if (nameCache.has(key)) return nameCache.get(key);
+  // Извлекаем samaccountname из полного ключа
+  const parts = String(userKey).split('\\');
+  const login = parts[parts.length - 1].toUpperCase();
+  if (!login) return null;
+
+  // Проверяем кэш
+  if (fullNameCache.has(login)) {
+    return fullNameCache.get(login);
+  }
+
   try {
-    const name = (await lookupName(login)) || login;
-    nameCache.set(key, name);
-    return name;
+    // Авторизуемся
+    const conn = await connect({
+      url: `ldap://${LDAP_HOST}:${LDAP_PORT}`,
+      bindDN: LDAP_SERVICE_USER,
+      bindPassword: LDAP_SERVICE_PASSWORD,
+      timeout: 5000,
+      connectTimeout: 5000,
+    });
+
+    try {
+      // Поиск по samaccountname
+      const filter = `(&(objectClass=user)(sAMAccountName=${login}))`;
+      const entries = await search(conn, LDAP_BASE_DN, {
+        filter,
+        scope: 'sub',
+        attributes: ['displayName', 'sn', 'givenName', 'cn'],
+        timeout: 5000,
+      });
+
+      let fullName = null;
+
+      if (entries && entries.length > 0) {
+        const entry = entries[0];
+        const displayName = Array.isArray(entry.displayName) ? entry.displayName[0] : entry.displayName;
+        const sn = Array.isArray(entry.sn) ? entry.sn[0] : entry.sn;
+        const givenName = Array.isArray(entry.givenName) ? entry.givenName[0] : entry.givenName;
+        const cn = Array.isArray(entry.cn) ? entry.cn[0] : entry.cn;
+
+        if (displayName) {
+          fullName = displayName;
+        } else if (sn && givenName) {
+          fullName = `${sn} ${givenName}`;
+        } else if (cn) {
+          fullName = cn;
+        }
+      }
+
+      // Сохраняем в кэш (null тоже кэшируем)
+      fullNameCache.set(login, fullName || null);
+
+      // Ограничиваем размер кэша
+      if (fullNameCache.size > MAX_CACHE_SIZE) {
+        const keys = Array.from(fullNameCache.keys());
+        keys.slice(0, Math.floor(MAX_CACHE_SIZE / 4)).forEach((k) => fullNameCache.delete(k));
+      }
+
+      return fullName || null;
+    } finally {
+      await close(conn);
+    }
   } catch (err) {
-    console.error(`LDAP: не удалось получить ФИО для ${login}:`, err.message);
-    return login; // не кэшируем ошибку — попробуем снова при следующем запросе
+    console.error('[LDAP] Ошибка запроса к контроллеру домена:', err.message);
+    // При ошибке кэшируем null на короткое время
+    fullNameCache.set(login, null);
+    return null;
   }
 }
 
-// Пакетное получение ФИО: уникальные логины, параллельно
-async function getFullNames(userKeys) {
-  const unique = [...new Set(userKeys)];
-  const names = await Promise.all(unique.map(getFullName));
-  return new Map(unique.map((u, i) => [u, names[i]]));
+/**
+ * Получить ФИО для нескольких пользователей (batch с кэшем).
+ * @param {string[]} userKeys — массив доменных ключей
+ * @returns {Promise<Map<string, string|null>>>} — Map<login, fullName>
+ */
+async function resolveFullNames(userKeys) {
+  const results = new Map();
+
+  const pending = [];
+  for (const key of userKeys) {
+    if (!key) continue;
+    const parts = String(key).split('\\');
+    const login = parts[parts.length - 1].toUpperCase();
+    if (fullNameCache.has(login)) {
+      results.set(login, fullNameCache.get(login));
+    } else {
+      pending.push(key);
+    }
+  }
+
+  if (pending.length > 0) {
+    const batch = await Promise.all(pending.map(getFullNameFromAD));
+    pending.forEach((key, i) => {
+      const parts = String(key).split('\\');
+      const login = parts[parts.length - 1].toUpperCase();
+      results.set(login, batch[i]);
+    });
+  }
+
+  return results;
 }
 
-module.exports = { getFullName, getFullNames, ldapEnabled: enabled };
+/**
+ * Очистить кэш (полезно при перезапуске или смене конфигурации).
+ */
+function clearCache() {
+  fullNameCache.clear();
+}
+
+module.exports = {
+  getFullNameFromAD,
+  resolveFullNames,
+  clearCache,
+};

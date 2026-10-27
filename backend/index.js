@@ -16,12 +16,17 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT || 3306,
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'ufk',
+  database: process.env.DB_NAME || 'ofk',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
   charset: 'utf8mb4'
 });
+
+// Ветераны
+const veteransRouter = require('./veterans');
+veteransRouter.init(pool);
+app.use('/api/veterans', veteransRouter);
 
 // Тестовый маршрут
 app.get('/api/health', (req, res) => {
@@ -104,14 +109,14 @@ app.get('/api/gallery/albums', async (req, res) => {
         k.ID_K,
         k.name,
         k.type,
-        (
-          SELECT COUNT(*)
-          FROM photo20 p
-          WHERE p.id_k = k.ID_K
-            AND p.ofk IN (3750,3751,3752,3753,3754,3755,3756,3757,3758,3759,3760,3761)
-        ) AS photo_count
+        p.ofk,
+        COUNT(DISTINCT p.ID_P) AS photo_count
       FROM konkurs k
+      LEFT JOIN photo20 p ON p.id_k = k.ID_K
+        AND p.ofk IN (3750,3751,3752,3753,3754,3755,3756,3757,3758,3759,3760,3761)
       WHERE k.active > 0
+      GROUP BY k.ID_K, k.name, k.type, p.ofk
+      HAVING p.ofk IS NOT NULL
       ORDER BY k.name
     `);
     res.json(rows);

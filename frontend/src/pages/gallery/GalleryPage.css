@@ -1,7 +1,7 @@
 /* ===== Gallery Page ===== */
 
 .gallery-page {
-  padding: 2rem;
+  padding: 1.5rem;
   min-width: 900px;
   max-width: 1200px;
   margin: 0 auto;
@@ -102,6 +102,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
+  min-height: 210px;
 }
 
 .album-tile:hover {
@@ -135,6 +136,30 @@
   background: var(--bg-submenu);
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
+}
+
+/* ===== Konkurs Album Tile ===== */
+
+.album-tile-konkurs {
+  border-color: #2980b9;
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(41, 128, 185, 0.08) 100%);
+}
+
+.album-tile-konkurs:hover {
+  border-color: #3498db;
+  box-shadow: 0 8px 32px rgba(41, 128, 185, 0.3);
+}
+
+/* ===== Veterans Album Tile ===== */
+
+.album-tile-veterans {
+  border-color: #c9a84c;
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201, 168, 76, 0.08) 100%);
+}
+
+.album-tile-veterans:hover {
+  border-color: #d4af37;
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.3);
 }
 
 /* ===== Photos Grid ===== */
@@ -282,4 +307,534 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ===== Veterans Section ===== */
+
+.veterans-page {
+  padding: 2rem;
+  min-width: 900px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-y: auto;
+  max-height: 770px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--bg-card);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.veterans-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.veterans-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.veterans-title-icon {
+  font-size: 1.6em;
+}
+
+.veterans-photo-count {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: var(--bg-card);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.veterans-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.veterans-back-btn:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateX(-3px) scale(1.04);
+}
+
+.veterans-loading,
+.veterans-error,
+.veterans-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.veterans-error {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* Hero Section */
+
+.veterans-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+}
+
+.veterans-hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.veterans-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.veterans-hero-desc {
+  text-align: justify;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Download Card */
+
+.veterans-download-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 117, 218, 0.05) 100%);
+  border: 2px solid var(--accent-color);
+  border-radius: 16px;
+}
+
+.veterans-download-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.veterans-download-info {
+  flex: 1;
+}
+
+.veterans-download-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.veterans-download-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.veterans-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.veterans-download-btn:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 117, 218, 0.3);
+}
+
+/* Sub-albums */
+
+.veterans-sub-albums {
+  margin-top: 1rem;
+}
+
+.veterans-sub-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.veterans-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.veterans-sub-tile {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.veterans-sub-tile:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px var(--shadow-color);
+  background: var(--bg-card-hover);
+}
+
+.veterans-sub-tile:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.veterans-sub-tile-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.veterans-sub-tile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.veterans-sub-tile-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Veterans Grid */
+
+.veterans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.veteran-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.veteran-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.veteran-card:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.veteran-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-submenu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.veteran-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.veteran-card:hover .veteran-card-img {
+  transform: scale(1.05);
+}
+
+.veteran-card-zoom-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  opacity: 0;
+}
+
+.veteran-card:hover .veteran-card-zoom-btn {
+  opacity: 1;
+}
+
+.veteran-card-zoom-btn:hover {
+  background: var(--accent-color);
+  transform: scale(1.15);
+}
+
+.veteran-card-info {
+  padding: 1rem;
+}
+
+.veteran-card-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Veteran Detail */
+
+.veteran-detail-info {
+  margin-bottom: 2rem;
+}
+
+.veteran-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+}
+
+.veteran-detail-table tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.veteran-detail-table tr:last-child {
+  border-bottom: none;
+}
+
+.veteran-detail-alt {
+  background: var(--bg-submenu);
+}
+
+.veteran-detail-num {
+  padding: 1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-align: center;
+  width: 40px;
+  font-size: 1rem;
+}
+
+.veteran-detail-label {
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 35%;
+  font-size: 0.95rem;
+}
+
+.veteran-detail-value {
+  padding: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Veteran Photos */
+
+.veteran-detail-photos {
+  margin-top: 2rem;
+}
+
+.veteran-detail-photos-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.veteran-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.veteran-photo-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.veteran-photo-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.veteran-photo-card:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.veteran-photo-card-img-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-submenu);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.veteran-photo-card-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.veteran-photo-card:hover .veteran-photo-card-img {
+  transform: scale(1.03);
+}
+
+.veteran-photo-card-desc {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.4;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Posters Grid */
+
+.veterans-posters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.veteran-poster-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.veteran-poster-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 8px 32px var(--shadow-color);
+}
+
+.veteran-poster-card:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.veteran-poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.veteran-poster-card:hover .veteran-poster-img {
+  transform: scale(1.03);
+}
+
+/* ===== Konkurs Sub-albums ===== */
+
+.konkurs-sub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.konkurs-sub-tile {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.konkurs-sub-tile:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px var(--shadow-color);
+  background: var(--bg-card-hover);
+}
+
+.konkurs-sub-tile:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.konkurs-sub-tile-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.konkurs-sub-tile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }

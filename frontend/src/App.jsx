@@ -95,6 +95,11 @@ import {
 // Страницы Фотогалереи
 import GalleryPage from './pages/gallery/GalleryPage';
 import GalleryAlbumPage from './pages/gallery/GalleryAlbumPage';
+import KonkursAlbumPage from './pages/gallery/KonkursAlbumPage';
+import VeteransLandingPage from './pages/gallery/VeteransLandingPage';
+import VeteransListPage from './pages/gallery/VeteransListPage';
+import VeteranDetailPage from './pages/gallery/VeteranDetailPage';
+import PostersPage from './pages/gallery/PostersPage';
 
 // Страницы модуля опросов
 import {
@@ -194,7 +199,15 @@ function App() {
             
             {/* Страницы Фотогалереи */}
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/gallery/konkurs" element={<KonkursAlbumPage />} />
+            <Route path="/gallery/konkurs/:ofk" element={<KonkursAlbumPage />} />
             <Route path="/gallery/:ofk" element={<GalleryAlbumPage />} />
+            
+            {/* Страницы акции "Мы — наследники Победы!" */}
+            <Route path="/gallery/veterans" element={<VeteransLandingPage />} />
+            <Route path="/gallery/veterans/photos" element={<VeteransListPage />} />
+            <Route path="/gallery/veterans/detail/:id" element={<VeteranDetailPage />} />
+            <Route path="/gallery/veterans/posters" element={<PostersPage />} />
             
             {/* Страницы опросов */}
             <Route path="/polls/manager" element={<PollsManagerPage />} />

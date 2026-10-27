@@ -10,6 +10,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { getFullNameFromAD } = require('./ldap');
 
 const POLLS_DIR = process.env.POLLS_DIR || path.join(__dirname, 'data', 'polls');
 const VOTES_DIR = path.join(POLLS_DIR, 'votes');
@@ -118,15 +119,31 @@ const isOwner = (poll, user) => !!user && norm(poll.creator) === user;
 const canEdit = (poll, user) => isOwner(poll, user) || isSupervisor(user);
 const canViewResults = (poll, user) => canEdit(poll, user) || MANAGER_SET.has(user);
 
-let fullNames = null;
-function displayName(userKey) {
-  if (!fullNames) {
-    const raw = readJson(path.join(POLLS_DIR, 'users.json'), {});
-    fullNames = {};
-    Object.entries(raw).forEach(([k, v]) => { fullNames[norm(k.split('\\').pop())] = v; });
-  }
+// Кэш для displayName (локальный, в рамках одного запроса)
+const displayNameCache = new Map();
+
+async function displayName(userKey) {
+  if (!userKey) return '';
   const login = String(userKey).split('\\').pop();
-  return fullNames[norm(login)] || login;
+  const cacheKey = norm(login);
+
+  if (displayNameCache.has(cacheKey)) {
+    return displayNameCache.get(cacheKey);
+  }
+
+  // Сначала пробуем LDAP (корпоративный сервер)
+  let fullName = await getFullNameFromAD(userKey);
+
+  // Если LDAP не дал результата, пробуем fallback на users.json (для разработки)
+  if (!fullName) {
+    const raw = readJson(path.join(POLLS_DIR, 'users.json'), {});
+    fullName = raw[login] || raw[cacheKey] || null;
+  }
+
+  // Если ничего не нашли — возвращаем логин
+  const result = fullName || login;
+  displayNameCache.set(cacheKey, result);
+  return result;
 }
 
 function requireUser(req, res, next) {
@@ -399,10 +416,27 @@ function requireResultsAccess(req, res, next) {
 }
 
 // Результаты (polls_results.php)
-router.get('/:id/results', requireUser, requireResultsAccess, (req, res) => {
+router.get('/:id/results', requireUser, requireResultsAccess, async (req, res) => {
   const { poll, pollId: id } = req;
   const votingType = poll.voting_type || 'public';
   const votes = readVotes(id);
+
+  // Собираем уникальных пользователей для каждого ответа
+  const voterKeyMap = {};
+  poll.questions.forEach((q) => {
+    q.answers.forEach((_, i) => {
+      const key = `${q.id}_${i}`;
+      const voters = votes.filter((v) => (v.answer || []).includes(key));
+      if (voters.length > 0) voterKeyMap[key] = voters.map((v) => v.user);
+    });
+  });
+
+  // Получаем ФИО для всех уникальных логинов
+  const allUserKeys = [...new Set(Object.values(voterKeyMap).flat())];
+  const nameMap = new Map();
+  await Promise.all(allUserKeys.map(async (uk) => {
+    nameMap.set(uk, await displayName(uk));
+  }));
 
   res.json({
     id: poll.id,
@@ -418,7 +452,7 @@ router.get('/:id/results', requireUser, requireResultsAccess, (req, res) => {
           const count = q.votes[i];
           const key = `${q.id}_${i}`;
           const voters = votingType === 'public' && count > 0
-            ? votes.filter((v) => (v.answer || []).includes(key)).map((v) => displayName(v.user))
+            ? (voterKeyMap[key] || []).map((uk) => nameMap.get(uk) || uk.split('\\').pop())
             : [];
           return { text, count, percent: total > 0 ? Math.round((count / total) * 100) : 0, voters };
         }),
@@ -433,10 +467,26 @@ const csvCell = (v) => {
   return /[;"\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };
 
-router.get('/:id/export.csv', requireUser, requireResultsAccess, (req, res) => {
+router.get('/:id/export.csv', requireUser, requireResultsAccess, async (req, res) => {
   const { poll, pollId: id } = req;
   const isPublic = (poll.voting_type || 'public') === 'public';
   const votes = readVotes(id);
+
+  // Собираем уникальных пользователей для CSV
+  const userKeySet = new Set();
+  poll.questions.forEach((q) => {
+    q.answers.forEach((_, i) => {
+      const key = `${q.id}_${i}`;
+      votes.filter((v) => (v.answer || []).includes(key)).forEach((v) => userKeySet.add(v.user));
+    });
+  });
+
+  // Получаем ФИО для всех
+  const nameMap = new Map();
+  await Promise.all([...userKeySet].map(async (uk) => {
+    nameMap.set(uk, await displayName(uk));
+  }));
+
   const rows = [[poll.title, 'Голоса (кол-во)', 'ФИО'], []];
 
   poll.questions.forEach((q) => {
@@ -445,7 +495,7 @@ router.get('/:id/export.csv', requireUser, requireResultsAccess, (req, res) => {
       const key = `${q.id}_${i}`;
       const chosen = votes.filter((v) => (v.answer || []).includes(key));
       rows.push(isPublic
-        ? [answer, chosen.length, chosen.map((v) => displayName(v.user)).join('\n')]
+        ? [answer, chosen.length, chosen.map((v) => nameMap.get(v.user) || v.user.split('\\').pop()).join('\n')]
         : [answer, chosen.length]);
     });
     rows.push([]);

@@ -118,9 +118,6 @@ export default function GalleryAlbumPage() {
   return (
     <div className="gallery-page">
       <div className="gallery-header">
-        <button className="gallery-back-btn" onClick={handleBack}>
-          ← Назад к альбомам
-        </button>
         <h2 className="gallery-title">
           {album?.icon && <span className="gallery-album-icon">{album.icon}</span>}
           {album?.name || 'Фотогалерея'}

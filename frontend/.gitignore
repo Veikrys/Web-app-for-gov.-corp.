@@ -23,3 +23,6 @@ examples
 *.njsproj
 *.sln
 *.sw?
+person/
+photo20/
+photo70/
